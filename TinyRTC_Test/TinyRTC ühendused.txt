@@ -1,0 +1,19 @@
+Arduino		TinyRTC
+SDA 	->	 2
+SCL 	->	 3
+GND 	->	 GND
+VCC 	->	 VCC
+
+
+
+For i2C connections to Sparkfun Pro Micro or Arduino Micro, physical wiring is as follows:
+
+SDA connects to Arduino Micro pin Labeled 2 (not A2)
+SCL connects to Arduino Micro, pin Labeled 3 (not A3)
+GND connects to GND
+
+POWER: i2C devices usually require power. Pins may be labeled VCC, 5V or 3V. (*** BE CAREFUL HERE ***) This may be connected to Arduino Micro under the following conditions. 
+1) The i2C device consumes less current (ma) ,at all times, than your Arduino can provide.
+2a) The i2C device consumes the same voltage that your Arduino provides.
+2b) The i2C device consumes the less voltage that your Arduino provides, but has an added regulator that lowers the voltage to the correct level. Here's a trick: Place three 1N4007
+diodes in series, to drop 5V down to 3V if you don't have a proper regulator on hand.
