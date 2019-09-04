@@ -1,3 +1,5 @@
+I2C Address = 0x68
+
 Arduino		TinyRTC
 SDA 	->	 2
 SCL 	->	 3
