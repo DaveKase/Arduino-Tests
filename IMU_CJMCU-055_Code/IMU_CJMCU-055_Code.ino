@@ -3,19 +3,20 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 
-Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x29);
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 void setup() {
   Serial.begin(9600);
   Serial.println("Orientation Sensor Test");
   Serial.println("");
-  bno.begin();
+  //bno.begin();
+  
   // Init sensor
-  /*if(!bno.begin()) {
+  if(!bno.begin()) {
     // There was a problem detecting the BNO055, check connections
     Serial.println("No BNO055 detected, check wiring or I2C address");
-    //while(1);
-  }*/
+    while(1);
+  }
 
   delay(1000);
 
