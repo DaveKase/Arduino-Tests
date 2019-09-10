@@ -1,12 +1,13 @@
 #include <ESP8266WiFi.h>
 
 // Init server on port 80
-WiFiServer server(80); 
+WiFiServer server(80);
 
-void setup() {
-  // Blink; LED on D2 as output
+void setupBlink() {
   pinMode(2, OUTPUT);
+}
 
+void setupServer() {
   // Declare ESP2866 as access point
   WiFi.mode(WIFI_AP);
   WiFi.softAP("Hello_IoT", "12345678"); // SSID, PWD
@@ -19,13 +20,21 @@ void setup() {
   Serial.println(boardIp);
 }
 
-void loop() {
+void setup() {
+  // Blink; LED on D2 as output
+  setupBlink();
+  setupServer();
+}
+
+void loopBlink() {
   // Blink mode
   digitalWrite(2, HIGH);
   delay(1000);
   digitalWrite(2, LOW);
   delay(1000);
+}
 
+void loopServer() {
   WiFiClient client = server.available();
 
   if(!client) {
@@ -34,4 +43,14 @@ void loop() {
   }
 
   Serial.println("Somebody has connected");
+
+  // Read request and print to monitor
+  String req = client.readString();
+  Serial.print("req = ");
+  Serial.println(req);
+}
+
+void loop() {
+  loopBlink();
+  loopServer();
 }
