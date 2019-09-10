@@ -45,7 +45,7 @@ void loopServer() {
   Serial.println("Somebody has connected");
 
   // Read request and print to monitor
-  String req = client.readString();
+  String req = client.readStringUntil('\r');
   Serial.print("req = ");
   Serial.println(req);
 }
