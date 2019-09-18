@@ -12,4 +12,9 @@ void loop() {
     Serial.print(input); // Printing data back to local Serial monitor
     Serial1.print(input); // Sending data to another Arduino Micro
   }
+
+  if(Serial1.available()) {
+    String input = Serial1.readString();
+    Serial.println(input);
+  }
 }
