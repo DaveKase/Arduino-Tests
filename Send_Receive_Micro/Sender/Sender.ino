@@ -13,8 +13,8 @@ void loop() {
     Serial1.print(input); // Sending data to another Arduino Micro
   }
 
-  if(Serial1.available()) {
-    String input = Serial1.readString();
-    Serial.println(input);
+  if(Serial1.available()) { // if there is data sent over UART from another Arduino Micro 
+    String input = Serial1.readString(); // Reading data from UART
+    Serial.println(input); // Printing out received data
   }
 }
