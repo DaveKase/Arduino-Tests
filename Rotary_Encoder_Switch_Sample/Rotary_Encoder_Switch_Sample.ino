@@ -15,7 +15,7 @@ int lastPos;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(clk, INPUT_PULLUP);
+  pinMode(clk, INPUT);
   pinMode(dt, INPUT_PULLUP);
   pinMode(sw, INPUT_PULLUP);
   pinMode(led, OUTPUT);
@@ -29,8 +29,10 @@ void loop() {
 
 void encode() {
   if(digitalRead(dt) == digitalRead(clk)) {
+    delay(100);
     pos++;
   } else {
+    delay(100);
     pos--;
   }
 
