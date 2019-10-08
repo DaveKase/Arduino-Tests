@@ -5,46 +5,48 @@
  * For this code to work, pin 2 is used as interrupt pin
 */
 
+// Rotary Encoder connection pins
 #define clk 2
 #define dt 3
 #define sw 4
+
+// RGB LED connection pins
+#define b 5
+#define g 6
+#define r 7
+
+// Onboard LED pin
 #define led 17
 
+int lastState;
+int state;
 int pos = 0;
-int lastPos;
+int lastPos = 0;
 
 void setup() {
   Serial.begin(9600);
   pinMode(clk, INPUT);
-  pinMode(dt, INPUT_PULLUP);
+  pinMode(dt, INPUT);
   pinMode(sw, INPUT_PULLUP);
   pinMode(led, OUTPUT);
-  attachInterrupt(0, encode, CHANGE);
+
+  pinMode(b, OUTPUT);
+  pinMode(g, OUTPUT);
+  pinMode(r, OUTPUT);
+
+  lastState = digitalRead(clk);
 }
 
 void loop() {
-  int swPress = digitalRead(sw);
-  digitalWrite(led, swPress);
-}
-
-void encode() {
-  if(digitalRead(dt) == digitalRead(clk)) {
-    delay(100);
-    pos++;
-  } else {
-    delay(100);
-    pos--;
+  state = digitalRead(clk);
+  if(state != lastState) {
+    if(digitalRead(dt) != state) {
+      pos++;
+    } else {
+      pos--;
+    }
+    Serial.print("pos: ");
+    Serial.println(pos);
   }
-
-  Serial.print("pos = ");
-  Serial.print(pos);
-  Serial.print(", ");
-
-  if(pos > lastPos) {
-    Serial.println(" >>");
-  } else {
-    Serial.println(" <<");
-  }
-
-  lastPos = pos;
+  lastState = state;
 }
