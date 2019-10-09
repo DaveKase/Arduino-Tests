@@ -120,7 +120,6 @@ void changeColorBrightness() {
     lastState = state;
   }
   
-  
   if(pos >= 0 && pos <= 255) {
     if(colorChangeIndex == -1 || colorChangeIndex == 0) {
       colorChangeIndex = 0;
