@@ -22,7 +22,7 @@ int rgbState[4] = {0, 0, 0, 0};
 int pins[3] = {r, g, b};
 int oldSwState = 0;
 int colorChangeIndex = -1;
-int editablePinNr = 0;
+int editablePinNr = r;
 
 void setup() {
   Serial.begin(9600);
@@ -31,10 +31,9 @@ void setup() {
   pinMode(dt, INPUT);
   pinMode(sw, INPUT_PULLUP);
 
-  pinMode(b, OUTPUT);
-  pinMode(g, OUTPUT);
   pinMode(r, OUTPUT);
-  pinMode(led, OUTPUT);
+  pinMode(g, OUTPUT);
+  pinMode(b, OUTPUT);
 
   lastState = digitalRead(clk);
 }
@@ -63,8 +62,6 @@ void changeColor() {
   colorChangeIndex++;
   showEdited();
   pos = rgbState[colorChangeIndex];
-  Serial.print("index = ");
-  Serial.println(colorChangeIndex);
 }
 
 void showEdited() {
@@ -83,7 +80,7 @@ void showEdited() {
     analogWrite(g, 0);
     analogWrite(b, 0);
   }
-
+  
   if(colorChangeIndex != 3) {
     editablePinNr = pins[colorChangeIndex];
     analogWrite(editablePinNr, 255);
@@ -108,19 +105,14 @@ void changeColorBrightness() {
   if(pos >= 0 && pos <= 255) {
     if(colorChangeIndex == -1 || colorChangeIndex == 0) {
       colorChangeIndex = 0;
-      analogWrite(r, pos);
-    } else if(colorChangeIndex == 1) {
-      analogWrite(g, pos);
-    } else if(colorChangeIndex == 2) {
-      analogWrite(b, pos);
     } else if(colorChangeIndex == 3) {
       analogWrite(r, pos);
       analogWrite(g, pos);
       analogWrite(b, pos);
     }
-
-    if(pos != oldPos) {
-      Serial.println(pos);
+    
+    if(colorChangeIndex != 3) {
+      analogWrite(editablePinNr, pos);
     }
 
     oldPos = pos;
