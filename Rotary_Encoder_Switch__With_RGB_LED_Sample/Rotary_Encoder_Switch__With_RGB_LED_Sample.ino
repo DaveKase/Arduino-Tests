@@ -71,24 +71,6 @@ void showEdited() {
   analogWrite(r, 0);
   analogWrite(g, 0);
   analogWrite(b, 0);
-//
-//  if(colorChangeIndex <= 0 || colorChangeIndex == 4) {
-//    colorChangeIndex = 0;
-//    editablePinNr = pins[colorChangeIndex]; // If not careful, Arduino allows to go out of array bounds w/o rising exception
-//    analogWrite(editablePinNr, 255);
-//    delay(1000);
-//    analogWrite(editablePinNr, 255);
-//  } else if(colorChangeIndex == 3) {
-//    analogWrite(r, 255);
-//    analogWrite(g, 255);
-//    analogWrite(b, 255);
-//    delay(1000);
-//    analogWrite(r, 0);
-//    analogWrite(g, 0);
-//    analogWrite(b, 0);
-//  } else {
-//    
-//  }
 
   if(colorChangeIndex <= 0 || colorChangeIndex == 4) {
     colorChangeIndex = 0;
