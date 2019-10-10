@@ -19,8 +19,10 @@ int swState;
 int pos = 0;
 int oldPos = 0;
 int rgbState[4] = {0, 0, 0, 0};
+int pins[3] = {r, g, b};
 int oldSwState = 0;
 int colorChangeIndex = -1;
+int editablePinNr = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -55,7 +57,7 @@ void getSwitchCount() {
   }
 }
 
-// 0 - red, 1 - green, 2 - red, 3 - all
+// 0 - red, 1 - green, 2 - blue, 3 - all
 void changeColor() {
   rgbState[colorChangeIndex] = pos;
   colorChangeIndex++;
@@ -66,44 +68,45 @@ void changeColor() {
 }
 
 void showEdited() {
-  switch(colorChangeIndex) {
-    case -1: case 0: case 4:
-      colorChangeIndex = 0;
-      analogWrite(r, 255);
-      analogWrite(g, 0);
-      analogWrite(b, 0);
-      delay(1000);
-      analogWrite(r, 0);
-      analogWrite(g, 0);
-      analogWrite(b, 0);
-      break;
-    case 1:
-      analogWrite(r, 0);
-      analogWrite(g, 255);
-      analogWrite(b, 0);
-      delay(1000);
-      analogWrite(r, 0);
-      analogWrite(g, 0);
-      analogWrite(b, 0);
-      break;
-    case 2:
-      analogWrite(r, 0);
-      analogWrite(g, 0);
-      analogWrite(b, 255);
-      delay(1000);
-      analogWrite(r, 0);
-      analogWrite(g, 0);
-      analogWrite(b, 0);
-      break;
-    case 3:
-      analogWrite(r, 255);
-      analogWrite(g, 255);
-      analogWrite(b, 255);
-      delay(1000);
-      analogWrite(r, 0);
-      analogWrite(g, 0);
-      analogWrite(b, 0);
-      break;
+  analogWrite(r, 0);
+  analogWrite(g, 0);
+  analogWrite(b, 0);
+//
+//  if(colorChangeIndex <= 0 || colorChangeIndex == 4) {
+//    colorChangeIndex = 0;
+//    editablePinNr = pins[colorChangeIndex]; // If not careful, Arduino allows to go out of array bounds w/o rising exception
+//    analogWrite(editablePinNr, 255);
+//    delay(1000);
+//    analogWrite(editablePinNr, 255);
+//  } else if(colorChangeIndex == 3) {
+//    analogWrite(r, 255);
+//    analogWrite(g, 255);
+//    analogWrite(b, 255);
+//    delay(1000);
+//    analogWrite(r, 0);
+//    analogWrite(g, 0);
+//    analogWrite(b, 0);
+//  } else {
+//    
+//  }
+
+  if(colorChangeIndex <= 0 || colorChangeIndex == 4) {
+    colorChangeIndex = 0;
+  } else if(colorChangeIndex == 3) {
+    analogWrite(r, 255);
+    analogWrite(g, 255);
+    analogWrite(b, 255);
+    delay(1000);
+    analogWrite(r, 0);
+    analogWrite(g, 0);
+    analogWrite(b, 0);
+  }
+
+  if(colorChangeIndex != 3) {
+    editablePinNr = pins[colorChangeIndex];
+    analogWrite(editablePinNr, 255);
+    delay(1000);
+    analogWrite(editablePinNr, 255);
   }
 }
 
