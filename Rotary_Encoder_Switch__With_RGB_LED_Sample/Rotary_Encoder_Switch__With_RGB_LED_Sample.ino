@@ -94,9 +94,13 @@ void changeColorBrightness() {
   
   if(state != lastState) {
     if(digitalRead(dt) != state) {
-      pos++;
+      if(pos <= 254) {
+        pos++;
+      }
     } else {
-      pos--;
+      if(pos >= 1) {
+        pos--;
+      }
     }
     
     lastState = state;
@@ -109,12 +113,23 @@ void changeColorBrightness() {
       analogWrite(r, pos);
       analogWrite(g, pos);
       analogWrite(b, pos);
+      printVars();
     }
     
     if(colorChangeIndex != 3) {
       analogWrite(editablePinNr, pos);
+      printVars();
     }
 
     oldPos = pos;
   }
+}
+
+void printVars() {
+  Serial.print("index: ");
+  Serial.print(colorChangeIndex);
+  Serial.print(", pin: ");
+  Serial.print(editablePinNr);
+  Serial.print(", pos: ");
+  Serial.println(pos);
 }
