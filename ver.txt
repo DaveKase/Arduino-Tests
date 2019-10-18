@@ -1,3 +1,6 @@
+ver 33
+* Added python project to read UltrasonicSensor data from Serial port
+
 ver 32
 * Added ver.txt to have better overview of versions
 
