@@ -1,0 +1,95 @@
+ver 32
+* Added ver.txt to have better overview of versions
+
+ver 31
+* Fixed buffer overrun on rotary rgb code, where brightness value was out of bounds
+
+ver 30
+* Added tuplicate key values for remote in IR sample
+
+ver 29
+* Made IR sensor to react to some remote control buttons and dim RGB LEDs accordingly
+
+ver 28
+* Added sample code to read IR sensor data from IR remote control
+
+ver 27
+* Added simple ultrasonic sensor code
+
+ver 26
+* Beautified changeColorBrightness if clauses
+
+ver 25
+* Deleted unnessecary comments
+
+ver 24
+* Changed switch/case to if in showEdited method in Rotary-RGB-LED sample
+
+ver 23
+* Changed schematics for rotary encoder samples
+
+ver 22
+* Changed some file structure
+
+ver 21
+* Made Rotary Encoder to control RGB LED color and brightness
+
+ver 20
+* Added pinout schema to RGB LED control folder
+
+ver 19
+* Made rotary encoder control RGB LED brightness
+
+ver 18
+* Added some comments for encoder. Made new file for encoder with RGB LED. Deleted a interrupt pic
+
+ver 17
+* Fixed rotary code; Added RGB LED connections;
+
+ver 16
+* Changed rotary encoder code. Added sample for STM32 board. Both untested.
+
+ver 15
+* Added Rotary Encoder Switch code. Right now it sometimes reads multiple pulses for one step
+
+ver 14
+* Added code to handle VHN2SP30 Single Motor Driver module control code. Haven't tested yet.
+
+ver 13
+* Added Arduino joystick test code
+
+ver 12
+* Added comments to the code
+
+ver 11
+* Added TTL-RS485-TTL communication logic for Micro
+
+ver 10
+* Added response for Sender and Response handleing for Receiver. Also some rework for blink sample.
+
+ver 9
+* Added some idea files; They didn't work with micro, but helped
+
+ver 8
+* Added code for Arduino Leonardo Micro UART communication (one sends, other receives)
+
+ver 7
+* Added simple web-page to turn LED on/off
+
+ver 6
+* Only reading first line of req
+
+ver 5
+* Monitoring request sent by other device for ESP8266
+
+ver 4
+* Added test code for ESP8266 WiFi board
+
+ver 3
+* Made some changes to IMU BNO055 code. After some tinkering and soldering later, got it to finally work with this code.
+
+ver 2
+* Added some Arduino sample codes
+
+ver 1
+* First commit
