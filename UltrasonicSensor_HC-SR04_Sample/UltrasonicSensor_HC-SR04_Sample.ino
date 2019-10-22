@@ -8,8 +8,6 @@ www.HowToMechatronics.com
 
 #define triger 2
 #define echo 3
-//long dur;
-//int dist;
 
 void setup() {
   Serial.begin(9600);
@@ -32,6 +30,8 @@ void loop() {
 
   // Calculating distance
   int dist = dur * 0.034 / 2;
+  // Printing the result
   Serial.println(dist);
+  // Waiting for one second
   delay(1000);
 }

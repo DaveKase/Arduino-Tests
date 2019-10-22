@@ -4,12 +4,31 @@ Created on Fri Oct 18 14:41:19 2019
 
 @author: Taavi Kase
 """
-
+import threading
+import serial
 from vpython import *
 
+def bgThread(ser):
+    print("Separate thread")
+    counter = 0;
+   
+    while counter < 15:
+        print("in while, counter = %s" %counter)
+        line = ser.readline().decode("utf-8")
+        line = line.replace("/n/r", "")
+        value = int(line)
+        counter += 1
+        print(value)
+
+# Main method
 if __name__ == "__main__":
+    print("Main called")
     sphere()
     #box()
+    ser = serial.Serial("COM8")
+    x = threading.Thread(target=bgThread, args=(ser,))
+    x.start()
+
 
 """
 import threading
