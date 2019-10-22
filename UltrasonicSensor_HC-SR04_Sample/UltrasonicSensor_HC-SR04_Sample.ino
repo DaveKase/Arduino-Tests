@@ -32,8 +32,6 @@ void loop() {
 
   // Calculating distance
   int dist = dur * 0.034 / 2;
-
-  Serial.print("Distance = ");
   Serial.println(dist);
   delay(1000);
 }
