@@ -4,87 +4,61 @@ Created on Fri Oct 18 14:41:19 2019
 
 @author: Taavi Kase
 """
-import threading
+# Imports (importing only libraries from vpython, that we're going to use)
 import serial
-from vpython import *
-
-def bgThread(ser):
-    print("Separate thread")
-    counter = 0;
-   
-    while counter < 15:
-        print("in while, counter = %s" %counter)
-        line = ser.readline().decode("utf-8")
-        line = line.replace("/n/r", "")
-        value = int(line)
-        counter += 1
-        print(value)
+from vpython import vector
+from vpython import color
+from vpython import box
+from vpython import radians
 
 # Main method
 if __name__ == "__main__":
-    print("Main called")
-    sphere()
-    #box()
+    # Storing previous angle
+    oldAngle = 0.0
+    # Opening serial port. Port was created by Arduino IDE
     ser = serial.Serial("COM8")
-    x = threading.Thread(target=bgThread, args=(ser,))
-    x.start()
-
-
-"""
-import threading
-import tkinter
-import serial
-
-global captureSerial
-global canvas
-#This method should run on background thread
-def bgThread(ser):
-    global captureSerial
-    global canvas
-    print("Separate thread, capture = ", captureSerial)
+    
+    # Creating bigger, red box
+    background = box(pos = vector(0, 0, 0), axis = vector(0.5, 1, 1), 
+                     length = 20, hight = 1, width = 1, color = color.red)
+    
+    # Creating smaller, cyan box, that seems like it is connected to the bigger box
+    block = box(pos = vector(0, 0, 0), axis = vector(1, 1, 1), length = 10, 
+                hight = 1, width = 1, color = color.cyan, opasity = 0)
+    
+    # Flag used to indicate if while loop should run.
+    shouldRun = True
    
-    while captureSerial == True:
-        print("in while")
-        line = ser.readline().decode("utf-8")
-        line = line.replace("/n/r", "")
-        value = int(line)
+    while shouldRun:
+        # Reading a line from Serial port
+        data = ser.readline().decode("utf-8")
         
-        canvas = tkinter.Canvas(top, bg="blue", height=value, width=value)
-        #canvas.pack()
-        #top.mainloop()
-        print(value)
-
-def startButton():
-    global captureSerial
-    global canvas
-    captureSerial = True
-    print("START ")
-    ser = serial.Serial("COM8")
-    x = threading.Thread(target=bgThread, args=(ser,))
-    canvas = tkinter.Canvas(top, bg="blue", height=100, width=10)
-    x.start()
-
-def stopButton():
-    global captureSerial
-    captureSerial = False
-    print("STOP")
-
-# Main method
-if __name__ == "__main__":
-    print("In Main")
-    global captureSerial
-    global canvas
-    captureSerial = False
+        # Replacing line end characters with empty string
+        data = data.replace("\r\n", "")
+        
+        # Printing out received and edited data
+        print("data = " + data)
+        
+        """
+        If data received contains "END", ending while loop by setting shouldRun
+        flag to false. If this is true, the while loop starts again from beginning
+        and since shouldRun flag is false wich means while loop condition is 
+        false and loop stops executing
+        """
+        if data == "END":
+            shouldRun = False
+        else:
+            # If we have data (checking if didn't work properly here), typecast it to float
+            # calculate angle from it and rotate smaller block with radian of the angle
+            position = int(data)
+            angle = position * 360.0 / 255.0
+            print("angle %s" %angle)
+            
+            # rotate() rotates block with reference of the previous angle
+            # If we take oldAngle off of the angle, we get the rotation that corresponds
+            # to the rotation of the encoder
+            block.rotate(radians(angle - oldAngle))
+            oldAngle = angle
     
-    top = tkinter.Tk()
-    start = tkinter.Button(top, text = "Start", command = startButton)
-    stop = tkinter.Button(top, text = "Stop", command = stopButton)
-    canvas = tkinter.Canvas(top, bg="blue", height=10, width=10)
-    
-    start.pack()
-    stop.pack()
-    canvas.pack()
-    top.mainloop()
-    print("after thread")
-    
-"""
+    # Printing out that program ends
+    print("Program Ending")
