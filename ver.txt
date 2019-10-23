@@ -1,3 +1,6 @@
+ver 38
+* Added sample code to get array size dynamically into the blink without delay sample
+
 ver 37
 * Added simple Arduino blink sample, that doesn't use delay() method
 

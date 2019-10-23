@@ -41,12 +41,19 @@ unsigned long previousMillis = 0;        // will store last time LED was updated
 // constants won't change:
 const long interval = 1000;           // interval at which to blink (milliseconds)
 
+int mass[3] = {0, 1, 2};
+
 void setup() {
   // set the digital pin as output:
   pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
+   for(int i = 0; i < sizeof(mass) / sizeof(mass[0]); i++) {
+    Serial.print("i = ");
+    Serial.println(mass[i]);
+  }
+  
   // here is where you'd put code that needs to be running all the time.
 
   // check to see if it's time to blink the LED; that is, if the difference
