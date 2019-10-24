@@ -13,7 +13,7 @@ void loop() {
     Serial.println(receive); // Print received data to Serial monitor
     digitalWrite(txCtrl, HIGH); // Set pin 2 high, to enable data transmission on RS485 module
     Serial1.print("Received"); // Sending back data
-    delay(10); // Waiting 10 ms so data has time to arrive
+    delay(100); // Waiting 100 ms so data has time to arrive
     digitalWrite(txCtrl, LOW); // Set pin 2 low, so we can receive more data
   }
 }

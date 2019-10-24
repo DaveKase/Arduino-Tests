@@ -1,3 +1,6 @@
+ver 39
+* In RS485 Send/Receive code added to delay to give more time to read received data. 10 ms was just too little time to read all data.
+
 ver 38
 * Added sample code to get array size dynamically into the blink without delay sample
 

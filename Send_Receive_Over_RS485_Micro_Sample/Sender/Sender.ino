@@ -14,7 +14,7 @@ void loop() {
 
     digitalWrite(txCtrl, HIGH); // Set pin 2 high, to enable data transmission on RS485 module
     Serial1.print(input); // Sending data
-    delay(10); // Waiting 10 ms so data has time to arrive
+    delay(100); // Waiting 100 ms so data has time to arrive
     digitalWrite(txCtrl, LOW); // Set pin 2 to low, so we can receive response
   }
 
