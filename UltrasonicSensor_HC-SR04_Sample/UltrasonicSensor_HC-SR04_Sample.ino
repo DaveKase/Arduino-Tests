@@ -6,8 +6,8 @@ by Dejan Nedelkovski,
 www.HowToMechatronics.com
 */
 
-#define triger 2
-#define echo 3
+#define triger 4
+#define echo 5
 
 void setup() {
   Serial.begin(9600);
@@ -26,10 +26,10 @@ void loop() {
   digitalWrite(triger, LOW);
 
   // Reads the time taken for the ultrasound wave in microseconds
-  long dur = pulseIn(echo, HIGH);
+  double dur = pulseIn(echo, HIGH);
 
   // Calculating distance
-  int dist = dur * 0.034 / 2;
+  double dist = dur * 0.034 / 2.0;
   // Printing the result
   Serial.println(dist);
   // Waiting for one second

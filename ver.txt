@@ -1,3 +1,12 @@
+ver 42
+* Added a sample code for ultrasonic sensor and I2C display usage
+
+ver 41
+* Added script to test/show I2C LCD display usage
+
+ver 40
+* Added some test scripts to test different hardware components
+
 ver 39
 * In RS485 Send/Receive code added to delay to give more time to read received data. 10 ms was just too little time to read all data.
 
