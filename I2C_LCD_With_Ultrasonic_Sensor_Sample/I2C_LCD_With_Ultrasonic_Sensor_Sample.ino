@@ -4,13 +4,16 @@
  * I2C display sample idea from: https://create.arduino.cc/projecthub/Oniichan_is_ded/lcd-i2c-tutorial-664e5a
  * Display's I2C address was found using I2C scanner found also in this repository.
  * Pins 2 and 3 are used to I2C connection in case of Arduino Pro Micro (2 - SDA, 3 - SCL)
+ * Vanemate LCD ekraanide I2C aadress: 0x3F
+ * Uuemate LCD ekraanide I2C aadress: 0x27
 */
 
 // Includes
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x3F, 20, 4);   // Initializing the library with global variable
+//LiquidCrystal_I2C lcd(0x3F, 20, 4);   // Initializing the library with global variable
+LiquidCrystal_I2C lcd(0x27, 20, 4);   // Initializing the library with global variable
 
 // Ultrasonic sensor pin definitions
 #define triger 4                      // Variable to hold pin (triger) nr 4

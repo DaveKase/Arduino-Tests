@@ -1,3 +1,6 @@
+ver 43
+* Newer displays have different I2C address. Added the new address to I2C display and I2C display with ultrasonic sensor samples.
+
 ver 42
 * Added a sample code for ultrasonic sensor and I2C display usage
 
