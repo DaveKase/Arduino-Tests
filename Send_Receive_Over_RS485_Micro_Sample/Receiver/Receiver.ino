@@ -10,7 +10,7 @@ void setup() {
 void loop() {
   if(Serial1.available()) { // If there is received data
     String receive = Serial1.readString(); // Read data from TTL
-    Serial.println(receive); // Print received data to Serial monitor
+    Serial.print(receive); // Print received data to Serial monitor
     digitalWrite(txCtrl, HIGH); // Set pin 2 high, to enable data transmission on RS485 module
     Serial1.print("Received"); // Sending back data
     delay(100); // Waiting 100 ms so data has time to arrive

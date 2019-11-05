@@ -1,3 +1,6 @@
+ver 47
+* Updated RS485 code a bit
+
 ver 46
 * Added code to Micro UART communication, so now we have full dual communication (alot chatroom like)
 
