@@ -1,3 +1,6 @@
+ver 45
+* Replaced faulty connection schematic for RS485
+
 ver 44
 * Added sample code to read PZEM004T multimeter data. It works on 230 VAC, single phase.
 
