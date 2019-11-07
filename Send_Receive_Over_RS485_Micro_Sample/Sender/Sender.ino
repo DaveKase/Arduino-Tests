@@ -2,7 +2,7 @@
 
 void setup() {
   Serial.begin(9600); // Used to print to local Serial monitor
-  Serial1.begin(9600); // Used to send/receive data over TTL port
+  Serial1.begin(9600); // Used to send/receive data over UART port
   pinMode(txCtrl, OUTPUT);  // Setting pin 2 as output pin
   digitalWrite(txCtrl, LOW); // Setting pin 2 low to receive data
 }
@@ -19,7 +19,7 @@ void loop() {
   }
 
   if(Serial1.available()) { // If there is received data
-    String receive = Serial1.readString(); // Read data from TTL
+    String receive = Serial1.readString(); // Read data from UART
     Serial.println(receive); // Print received data to Serial monitor
   }
 }
