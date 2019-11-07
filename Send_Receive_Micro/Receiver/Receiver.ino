@@ -1,5 +1,6 @@
-/*  Receiver Code
- *  This code works with Arduino Leonardo RTH Micro Pro
+/*  
+ * Receiver Code
+ * This code works with Arduino Leonardo ETH Micro Pro
  */
 void setup() {
   Serial.begin(9600); // Used to print to local Serial monitor

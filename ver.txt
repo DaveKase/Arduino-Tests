@@ -1,3 +1,6 @@
+ver 50
+* Changed some comments in send_receive_micro code
+
 ver 49
 * Reworked the RS485 connection schema and changed some comments
 
