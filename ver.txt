@@ -1,3 +1,6 @@
+ver 48
+* Changed filename of RS485 schema and put one println back in RS485 Sender code. Gives a linebreak on ACK.
+
 ver 47
 * Updated RS485 code a bit
 
