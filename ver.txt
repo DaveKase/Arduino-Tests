@@ -1,3 +1,6 @@
+ver 52
+* Added ESP8266 WiFi sample with web pased LED blinking
+
 ver 51
 * Some rework on communication comments
 
