@@ -1,3 +1,6 @@
+ver 51
+* Some rework on communication comments
+
 ver 50
 * Changed some comments in send_receive_micro code
 
