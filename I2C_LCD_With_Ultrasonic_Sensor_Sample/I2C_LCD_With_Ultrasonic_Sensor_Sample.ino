@@ -12,12 +12,12 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-//LiquidCrystal_I2C lcd(0x3F, 20, 4);   // Initializing the library with global variable
-LiquidCrystal_I2C lcd(0x27, 20, 4);   // Initializing the library with global variable
+LiquidCrystal_I2C lcd(0x3F, 20, 4);   // Initializing the library with global variable
+//LiquidCrystal_I2C lcd(0x27, 20, 4);   // Initializing the library with global variable
 
 // Ultrasonic sensor pin definitions
-#define triger 4                      // Variable to hold pin (triger) nr 4
-#define echo 5                        // Variable to hold pin (echo) nr 5
+#define triger 10                     // Variable to hold pin (triger) nr 4
+#define echo 16                       // Variable to hold pin (echo) nr 5
 
 void setup() {
   Serial.begin(9600);                 // Begin serial communication

@@ -1,3 +1,6 @@
+ver 53
+* Added ESP8266 and Arduino Pro Micro SD-Card reader sample. Changed I2C LCD address for testing. Changed STM32 blinking frequency.
+
 ver 52
 * Added ESP8266 WiFi sample with web pased LED blinking
 
