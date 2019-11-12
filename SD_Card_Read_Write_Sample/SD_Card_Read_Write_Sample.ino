@@ -8,48 +8,51 @@
  * Idea from https://www.instructables.com/id/Micro-SD-Card-Tutorial/
  */
 
+// Includes
 #include <SPI.h>
 #include <SD.h>
 
+// Global variables
 #define cs 6
-
-File myFile;
+File file;
+String filename = "file.txt";
 
 void setup() {
-  Serial.begin(9600);                                // Open serial communications and wait for port to open:
-  
-  while (!Serial) {}                                 // Wait for serial port to connect. Needed for native USB port only
-  Serial.print("Initializing SD card...");
+  Serial.begin(9600);                                 // Open serial communications and wait for port to open:
+  while (!Serial) {}                                  // Wait for serial port to connect. Needed for native USB port only
+  Serial.print("Initializing SD card... ");           // Show message that SD card is initializing
 
-  if (!SD.begin(cs)) {
-    Serial.println("initialization failed!");
+  if (!SD.begin(cs)) {                                // If for some reason the SD card is not initialized, give error message
+    Serial.println("Initialization failed!");
     while (1);
   }
   
-  Serial.println("initialization done.");
-  myFile = SD.open("test.txt", FILE_WRITE);          // Open the file. note that only one file can be open at a time, so you have to close this one before opening another.
+  Serial.println("Initialization done.");             // Show message of successful SD card initialization
+  file = SD.open(filename, FILE_WRITE);               // Open the file. note that only one file can be open at a time, so you have to close this one before opening another.
 
-  if (myFile) {                                      // If the file opened okay, write to it:
-    Serial.print("Writing to test.txt...");
-    myFile.println("testing 1, 2, 3.");
-    myFile.close();                                  // Close the file:
-    Serial.println("done.");
+  if (file) {                                         // If the file opened okay, write to it:
+    Serial.print("Writing to " + filename + "... ");
+    file.println("Printing line 1");                  // This appends to file
+    file.println("Printing line 2");
+    file.println("Printing line 3");
+    file.close();                                     // Close the file:
+    Serial.println("Done.");
   } else {
-    Serial.println("error opening test.txt");        // If the file didn't open, print an error:
+    Serial.println("Error opening " + filename);      // If the file didn't open, print an error:
   }
 
-  myFile = SD.open("test.txt");                      // re-open the file for reading:
+  file = SD.open(filename);                           // Re-open the file for reading:
   
-  if (myFile) {
-    Serial.println("test.txt:");
+  if (file) {
+    Serial.println(filename + ":");
 
-    while (myFile.available()) {
-      Serial.write(myFile.read());                   // read from the file until there's nothing else in it:
+    while (file.available()) {                        // Read from the file until there's nothing else in it:
+      Serial.write(file.read());
     }
     
-    myFile.close();// close the file:
+    file.close();                                     // Close the file:
   } else {
-    Serial.println("error opening test.txt");        // if the file didn't open, print an error:
+    Serial.println("error opening " + filename);      // If the file didn't open, print an error:
   }
 }
 
