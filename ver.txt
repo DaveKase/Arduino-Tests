@@ -1,3 +1,6 @@
+ver 55
+* Changed time on TinyRTC_Test. Added SD card with RTC sample.
+
 ver 54
 * Changed comment format in SD_Card_Read_Write_Sample. Added a global variable for filename.
 

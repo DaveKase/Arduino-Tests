@@ -14,7 +14,7 @@ byte bcdToDec(byte val) {
 void setup() {
   Wire.begin();
   Serial.begin(9600);
-  setTime(0, 42, 13, 5, 29, 8, 19);
+  setTime(0, 20, 14, 3, 12, 11, 19);
 }
 
 // param DOW - Day of Week
