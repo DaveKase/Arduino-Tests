@@ -1,3 +1,6 @@
+ver 56:
+* Removed println from tinyRTC with SD card sample. It was used for debugging.
+
 ver 55
 * Changed time on TinyRTC_Test. Added SD card with RTC sample.
 

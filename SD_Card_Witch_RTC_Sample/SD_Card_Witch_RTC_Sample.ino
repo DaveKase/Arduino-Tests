@@ -310,9 +310,6 @@ void writeToSdCard() {
   
   // This is needed, because RTC only uses last two digits to hold year value, but SD card needs four digit year, otherwise it uses wrong year
   Year += 2000;                                                                                         // Hoping, that no one wants to use years in other values than 20xx, otherwise this is wrong
-  Serial.print("Year = ");
-  Serial.println(Year);
-  
   SdFile::dateTimeCallback(setDateTime);                                                                // Callback method to set the datetime to SD card file writing
   SD.begin(cs);
   file = SD.open(filename, FILE_WRITE);                                                                 // Open the file to write to it
