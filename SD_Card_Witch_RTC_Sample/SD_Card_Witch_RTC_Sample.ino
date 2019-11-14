@@ -103,17 +103,13 @@ void printCardVolume() {
     return;
   }
 
-  Serial.print("Failisüsteem on FAT");
+  Serial.print("The filesystem is FAT");
   Serial.println(volume.fatType(), DEC);                                                                // Printing out the filesystem (either FAT16 or FAT32)
   
   uint32_t volumeSize = volume.clusterCount();                                                          // Gets clustercount of the SD card
-  Serial.println(volumeSize);
   volumeSize *= volume.blocksPerCluster();                                                              // Multiplies that with the blocks per cluster
-  Serial.println(volumeSize);
   volumeSize *= 512;                                                                                    // There is 512 bytes in block so multiply the previous result with that as well
-  Serial.println(volumeSize);
   volumeSize /= 1024;                                                                                   // This division gives us the result in kilobytes
-  Serial.println(volumeSize);
   volumeSize /= 1024;                                                                                   // This division gives us the result in megabytes
 
   Serial.print("Card is ");                                                                             // Printing out the result
@@ -306,7 +302,7 @@ void getTimeFromSerial() {
 */
 void writeToSdCard() {
   sdCardWrite = true;                                                                                   // Set sdCardWrite value to true, so that we don't try to write more than one time (even if writing doesn't work)
-  Serial.println("writing to SD card");
+  Serial.println("Writing to SD card");
   
   // This is needed, because RTC only uses last two digits to hold year value, but SD card needs four digit year, otherwise it uses wrong year
   Year += 2000;                                                                                         // Hoping, that no one wants to use years in other values than 20xx, otherwise this is wrong
