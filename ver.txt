@@ -1,3 +1,6 @@
+ver 58:
+* Added ESP8266 client-server code. Two ESP8266s communicate with each other on WiFi network created by themselves.
+
 ver 57:
 * Deleted some more debugging printlns from SD card with RTC sample
 
