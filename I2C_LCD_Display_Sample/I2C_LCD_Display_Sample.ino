@@ -3,17 +3,24 @@
  * Screen's I2C address was found using I2C scanner found also in this repository.
  * If using Arduino Pro Micro, the I2C pins are digital 2 and 3, not Analog pins.
  * But this script actually prints the sample text.
+ * Older LCD display I2C address: 0x3F
+ * Newer LCD display I2C address: 0x27
+ * 
+ * Connections:
+ * Vcc - Raw
+ * Gnd - Gnd
+ * SDA - Pin 2 (SDA)
+ * SCL - Pin 3 (SCL)
+ * 
  * Idea from https://create.arduino.cc/projecthub/Oniichan_is_ded/lcd-i2c-tutorial-664e5a
- * Vanemate LCD ekraanide I2C aadress: 0x3F
- * Uuemate LCD ekraanide I2C aadress: 0x27
  */
 
 // Includes
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-//LiquidCrystal_I2C lcd(0x3F, 20, 4); // Initializing the library with global variable
-LiquidCrystal_I2C lcd(0x27, 20, 4);   // Initializing the library with global variable
+LiquidCrystal_I2C lcd(0x3F, 20, 4); // Initializing the library with global variable
+//LiquidCrystal_I2C lcd(0x27, 20, 4);// Initializing the library with global variable
 bool testLcd = true;               // Added this variable so that we don't have to comment anything out
 
 void setup() {
