@@ -1,3 +1,6 @@
+ver 61:
+* Updated STM32 sample Blink code. Now programmable with ST-Link.
+
 ver 60:
 * Added ESP8266 sample with RTC and DHT11 (temperature and humidity sensor).
 
