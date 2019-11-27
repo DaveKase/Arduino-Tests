@@ -1,3 +1,6 @@
+ver 60:
+* Added ESP8266 sample with RTC and DHT11 (temperature and humidity sensor).
+
 ver 59:
 * Added DHT11 (temperature and humidity sensor) sample code with ESP8622.
 
