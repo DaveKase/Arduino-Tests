@@ -1,3 +1,6 @@
+ver 62:
+* Added STM32 testing script. Changed STM32 blink comments. Changed baud rate of ESP8266 DHT11 sample code.
+
 ver 61:
 * Updated STM32 sample Blink code. Now programmable with ST-Link.
 
