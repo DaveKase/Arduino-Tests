@@ -1,3 +1,6 @@
+ver 64:
+* Changed Rotary encoder code so that it will work better.
+
 ver 63:
 * Changed color of one wire in Rotary Encoder Switch sample connection schema for better readability.
 
