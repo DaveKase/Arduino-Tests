@@ -1,3 +1,6 @@
+ver 63:
+* Changed color of one wire in Rotary Encoder Switch sample connection schema for better readability.
+
 ver 62:
 * Added STM32 testing script. Changed STM32 blink comments. Changed baud rate of ESP8266 DHT11 sample code.
 
