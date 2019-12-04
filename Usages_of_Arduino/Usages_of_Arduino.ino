@@ -30,7 +30,8 @@ boolean eepromCleared = false;
  */
 void setup() {
   Serial.begin(115200);                                           // Starting Serial communication and EEPROM read/write
-  EEPROM.begin(512);                                              // This is needed for ESP8266, but not for Arduino
+  //EEPROM.begin(512);                                              // This is needed for ESP8266, but not for Arduino
+  EEPROM.begin();                                               // This is needed for Arduino
 }
 
 /*
@@ -56,7 +57,7 @@ void eeprom() {
   
   if(isAllEepromRead) {                                           // If all the addresses between 0 and addressesToRead value are read, write to EEPROM, address to write to is given as integer variable
     int addressToWriteTo = 0;
-    writeEeprom(addressToWriteTo);
+    //writeEeprom(addressToWriteTo);
   }
 }
 
@@ -65,13 +66,11 @@ void eeprom() {
  */
 void clearEeprom() {
   if(!eepromCleared) {                                            // We only want to iterate once, hence the flag
-    Serial.println("EEPROM not cleared");
-
     for (int i = 0; i < 512; i++) {                               // The easiest way I could think of to iterate over all EEPROM
       EEPROM.write(i, 255);                                       // This writes EEPROM value on address i(0-512) to 255
     }
     
-    eepromCleared = true;                                         // Set the flag to true
+    eepromCleared = true;                                         // Set the flag to true so we clear all EEPROM only once
     Serial.println("All EEPROM Cleared");                         // Print message
   }
 }
@@ -85,7 +84,7 @@ void readEeprom() {
   if(!isAllEepromRead) {                                          // We only want to iterate over EEPROM once, hence the boolean flag for that
     for(int address = 0; address < addressesToRead; address++) {  // This ensures that this method runs with given params, not overwritten in loop() method
       Serial.println();                                           // Empty line because ESP8266 prints out some unreadable data on start and no linechange
-      byte value = EEPROM.read(address);                          // read a byte from the current address of the EEPROM
+      byte value = EEPROM.read(address);                          // Read a byte from the current address of the EEPROM
       
       Serial.print("Address: ");                                  // Printing out EEPROM data with address
       Serial.print(address);
@@ -96,7 +95,7 @@ void readEeprom() {
       delay(250);                                                 // Wait for 0,25 seconds and continue
     }
     
-    isAllEepromRead = true;
+    isAllEepromRead = true;                                       // Set the flag to true, so we read all EEPROM only once
   }
 }
 
@@ -107,20 +106,13 @@ void readEeprom() {
  * @param addressToWriteTo - Sets the EEPROM aadress to write into
  */
 void writeEeprom(int addressToWriteTo) {
-  //Serial.println(address);
   if(wasWriteSuccess == false) {
     byte value = 42;                                              // Carefully selected value to write to EEPROM.
     EEPROM.write(addressToWriteTo, value);                        // Writes to EEPROM, addressToWriteTo determines the EEPROM address, value is the value to be written to EEPROM
-
-    // This if only works on ESP8266, on Arduino EEPROM library, there is no commit() method
-    if(EEPROM.commit()) {                                         // If commiting values to EEPROM was successful, wasWriteSuccess variable value is set to true, success message is printed out, and we read the value back from EEPROM
-      wasWriteSuccess = true;
-      Serial.println("EEPROM Write success");
-      isAllEepromRead = false;
-      addressesToRead = 3;
-      readEeprom();
-    } else {
-      Serial.println("EEPROM Write Failed, trying again");        // If EEPROM write was unsuccessful, prints error message and since the wasWriteSuccess value is still false, next loop tries again
-    }
+    wasWriteSuccess = true;                                       // Set flag to true, so we won't do this again
+    Serial.println("EEPROM Write success");                       // Print success message
+    isAllEepromRead = false;                                      // Set this flag to false so readEeprom method would run
+    addressesToRead = 3;                                          // Set the amount of addresses to be read in readEeprom method
+    readEeprom();                                                 // Calling readEeprom method. It reads addresses between 0 and addressesToRead value.
   }
 }
