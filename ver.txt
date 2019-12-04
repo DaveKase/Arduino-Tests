@@ -1,3 +1,6 @@
+ver 65:
+* Added Usages_of_Arduino code. Showing some stuff not previously cover in this repo. EEPROM read/write/clear works as needed.
+
 ver 64:
 * Changed Rotary encoder code so that it will work better.
 
