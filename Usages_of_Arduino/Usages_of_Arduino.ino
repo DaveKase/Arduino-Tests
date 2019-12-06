@@ -31,14 +31,21 @@ boolean eepromCleared = false;
 void setup() {
   Serial.begin(115200);                                           // Starting Serial communication and EEPROM read/write
   //EEPROM.begin(512);                                              // This is needed for ESP8266, but not for Arduino
-  EEPROM.begin();                                               // This is needed for Arduino
+  EEPROM.begin();                                                 // This is needed for Arduino
+
+  DDRB = B11111111;                                               // Sets all ports as outputs, except RX/TX pins. Done through register, which gives faster pin allocation
+  DDRC = B11111111;
+  DDRD = B11110111;
+  DDRE = B11111111;
+  DDRF = B11111111;
 }
 
 /*
  * Runs (actually loops) until microcontroller stops working for whatever reasons
  */
 void loop() {
-  eeprom();                                                       // This is used to comment in/out EEPROM code for other testings
+  //eeprom();                                                       // This is used to comment in/out EEPROM code for other testings
+  setOutputsRegister();                                             // Sets all register pins high, except RX/TX pins. Done through register, wich makes it faster do assign pins as HIGH or LOW
 }
 
 /*
@@ -115,4 +122,15 @@ void writeEeprom(int addressToWriteTo) {
     addressesToRead = 3;                                          // Set the amount of addresses to be read in readEeprom method
     readEeprom();                                                 // Calling readEeprom method. It reads addresses between 0 and addressesToRead value.
   }
+}
+
+/*
+ * Sets all registers HIGH, except TX/RX pins
+ */
+void setOutputsRegister() {
+  PORTB = B11111111;
+  PORTC = B11111111;
+  PORTD = B11110011;
+  PORTE = B11111111;
+  PORTF = B11111111;
 }

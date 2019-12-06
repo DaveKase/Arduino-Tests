@@ -1,3 +1,6 @@
+ver 67:
+* Pin allocation and setting them high or low done through registers
+
 ver 66:
 * Tested EEPROM usage with Arduino Pro Micro
 
