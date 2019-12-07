@@ -1,3 +1,6 @@
+ver 68:
+* Added subdirectories for EEPROM and register writing. Tested and they work.
+
 ver 67:
 * Pin allocation and setting them high or low done through registers
 
