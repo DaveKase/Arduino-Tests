@@ -1,3 +1,6 @@
+ver 69:
+* Variables now hold output data in registers testing
+
 ver 68:
 * Added subdirectories for EEPROM and register writing. Tested and they work.
 
