@@ -1,3 +1,6 @@
+ver 70:
+* Finished with registers. Alot of commands for working with registers are under Register code. Added a small connection schema as well.
+
 ver 69:
 * Variables now hold output data in registers testing
 
