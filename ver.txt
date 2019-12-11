@@ -1,3 +1,6 @@
+ver 71:
+* Added some number and string printing samples
+
 ver 70:
 * Finished with registers. Alot of commands for working with registers are under Register code. Added a small connection schema as well.
 
