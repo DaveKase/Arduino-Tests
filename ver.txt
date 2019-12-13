@@ -1,3 +1,6 @@
+ver 72:
+* Added comments for print sample
+
 ver 71:
 * Added some number and string printing samples
 
