@@ -1,3 +1,6 @@
+ver 73:
+* Added Replace_Delay code to show how to use millis() method call instead of delay()
+
 ver 72:
 * Added comments for print sample
 
