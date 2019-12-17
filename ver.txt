@@ -1,3 +1,6 @@
+ver 75:
+* Added some more code and commets to Replace_delay sample
+
 ver 74:
 * Added Maple Mini Blink sample code. Tested and works well, tried with different delays()
 
