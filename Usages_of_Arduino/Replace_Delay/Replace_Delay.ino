@@ -20,7 +20,7 @@ int longInterval = 5000;
 
 void setup() {
   Serial.begin(9600);                                         // Start serial connection
-  while(!Serial);
+  while(!Serial);                                             // Wait for serial to start
   shortStartTime = millis();                                  // Initialize short start time variable
   longStartTime = millis();                                   // Initialize long start time variable
   differentFor();                                             // Showing that for loop can be used with logic statements

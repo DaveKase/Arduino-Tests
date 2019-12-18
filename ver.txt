@@ -1,3 +1,6 @@
+ver:
+* Added one more comment in Replace_Delay. Added JSON samples for ESP8266 and Arduino Pro Micro.
+
 ver 75:
 * Added some more code and commets to Replace_delay sample
 
