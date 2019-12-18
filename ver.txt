@@ -1,4 +1,7 @@
-ver:
+ver 77:
+* Fixed versionig stuff
+
+ver 76:
 * Added one more comment in Replace_Delay. Added JSON samples for ESP8266 and Arduino Pro Micro.
 
 ver 75:
