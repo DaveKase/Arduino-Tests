@@ -1,3 +1,6 @@
+ver 78:
+* Small code chamge in UltrasonicSensor sample
+
 ver 77:
 * Fixed versionig stuff
 

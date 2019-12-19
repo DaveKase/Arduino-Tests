@@ -6,8 +6,8 @@ by Dejan Nedelkovski,
 www.HowToMechatronics.com
 */
 
-#define triger 4
-#define echo 5
+#define triger 2
+#define echo 3
 
 void setup() {
   Serial.begin(9600);
