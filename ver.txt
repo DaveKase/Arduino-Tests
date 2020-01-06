@@ -1,3 +1,6 @@
+ver 80
+* Some code changes and comments added to MapleMini_BlinkWithButton script
+
 ver 79:
 * Added test script for Maple Mini that uses the button to change between blink intervals. Blink is done withoud using delay() method.
 
