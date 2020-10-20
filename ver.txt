@@ -1,4 +1,4 @@
-ver 81:
+ver 81
 * Redone the micro tester so that it will blink the RX LED and keep all pins as HIGH.
 
 ver 80
