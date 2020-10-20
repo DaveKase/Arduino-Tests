@@ -1,5 +1,5 @@
 ver 81:
-* Changed Joystic code a bit. LED control was too slow if done after print.
+* Redone the micro tester so that it will blink the RX LED and keep all pins as HIGH.
 
 ver 80
 * Some code changes and comments added to MapleMini_BlinkWithButton script
