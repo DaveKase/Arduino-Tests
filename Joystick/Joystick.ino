@@ -20,10 +20,10 @@ void loop() {
   
   if(swState == 0) {
     swCnt++;
+    digitalWrite(rxLed, LOW);
     Serial.print("Switch count: ");
     Serial.println(swCnt);
 
-    digitalWrite(rxLed, LOW);
   }
 
   Serial.print("x = ");
