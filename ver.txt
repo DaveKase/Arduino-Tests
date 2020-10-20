@@ -1,3 +1,6 @@
+ver 82:
+* Changed Joystick code. LED blink was too slow because of the print
+
 ver 81
 * Redone the micro tester so that it will blink the RX LED and keep all pins as HIGH.
 

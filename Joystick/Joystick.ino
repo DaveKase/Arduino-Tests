@@ -23,7 +23,6 @@ void loop() {
     digitalWrite(rxLed, LOW);
     Serial.print("Switch count: ");
     Serial.println(swCnt);
-
   }
 
   Serial.print("x = ");
