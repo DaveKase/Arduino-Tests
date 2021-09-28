@@ -1,5 +1,4 @@
 #include <IRremote.h>
-#include <IRremoteInt.h>
 
 #define  ir_in 2
 

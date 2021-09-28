@@ -1,6 +1,5 @@
 // Including IRremote libraries by shirrif
 #include <IRremote.h>
-#include <IRremoteInt.h>
 
 // Defining pin numbers
 #define ir 2
@@ -16,10 +15,12 @@
 #define DOWN2 0xA3C8EDDB
 #define LEFT 0xFF22DD
 #define LEFT2 0x52A3D41F
+#define LEFT3 0x25AE7EE0
 #define RIGHT 0xFFC23D
 #define RIGHT2 0x20FE4DBB
 #define OK 0xFF02FD
 #define OK2 0xD7E84B1B
+#define OK3 0x57D22308
 #define ONE 0xFF6897
 #define ONE2 0xC101E57B
 #define TWO 0xFF9867
@@ -64,13 +65,13 @@ void changeLedBrightness(long value) {
     case DOWN: case DOWN2:                // If button DOWN was pressed and brightness value is more than zero, subtract on from existing brightness value
       changeBrightnessDown();
     break;
-    case LEFT: case LEFT2:                // If button LEFT was pressed, take one off of rgbValues and pins array position; if position is at first, move to last
+    case LEFT: case LEFT2: case LEFT3:    // If button LEFT was pressed, take one off of rgbValues and pins array position; if position is at first, move to last
       moveIndexToLeft();
     break;
     case RIGHT: case RIGHT2:              // If button RIGHT was pressed, add one to rgbValues and pins array indexing position; if position is at last, move to first
       moveIndexToRight();
     break;
-    case OK: case OK2:                    // If button OK was pressed, all brightness values are set to zero
+    case OK: case OK2: case OK3:          // If button OK was pressed, all brightness values are set to zero
       resetBrightness();
     break;
     case ONE: case ONE2:                  // If button number one was pressed, position value is 0, meaning red brightness is changed

@@ -1,10 +1,16 @@
+/*
+ * Use this to test Arduino Leonardo (ETH) boards 
+ */
+
+int rxLed = 17;
+
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(rxLed, OUTPUT);
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(50);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(50);
+  digitalWrite(rxLed, HIGH);
+  delay(500);
+  digitalWrite(rxLed, LOW);
+  delay(500);
 }
