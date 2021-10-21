@@ -10,7 +10,19 @@ void setup() {
 
 void loop() {
   if (IrReceiver.decode()) {
-    Serial.println(IrReceiver.decodedIRData.decodedRawData, HEX);
-    IrReceiver.resume(); // Enable receiving of the next value
+    long data = IrReceiver.decodedIRData.decodedRawData;
+    Serial.print("0x");
+    Serial.println(data, HEX);
+
+    switch(data) {
+      case 0xB946FF00:
+        Serial.println("UP");
+        break;
+      case 0xEA15FF00:
+        Serial.println("DOWN");
+        break;
+    }
+    
+    IrReceiver.resume();
   }
 }
