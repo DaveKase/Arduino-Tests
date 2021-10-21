@@ -1,19 +1,16 @@
 #include <IRremote.h>
-
-#define  ir_in 2
-
-IRrecv receiver(ir_in);
-decode_results results;
+#define  irIn 2
 
 void setup() {
   Serial.begin(9600);
-  pinMode(ir_in, INPUT);
-  receiver.enableIRIn();                  // Enables IR reciever
+  pinMode(irIn, INPUT);
+  Serial.begin(9600);
+  IrReceiver.begin(irIn, ENABLE_LED_FEEDBACK, USE_DEFAULT_FEEDBACK_LED_PIN);
 }
 
 void loop() {
-  if(receiver.decode(&results)) {         // If there is data received
-    Serial.println(results.value, HEX);   // Print it out as hexadecimal code
-    receiver.resume();                    // Resume receiving more
+  if (IrReceiver.decode()) {
+    Serial.println(IrReceiver.decodedIRData.decodedRawData, HEX);
+    IrReceiver.resume(); // Enable receiving of the next value
   }
 }
