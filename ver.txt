@@ -1,3 +1,6 @@
+ver 83:
+* Added a RGB sensor code, but didn't get the sensor to work
+
 ver 82:
 * Changed Joystick code. LED blink was too slow because of the print
 
